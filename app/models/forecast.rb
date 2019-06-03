@@ -1,7 +1,7 @@
 class Forecast
   attr_reader :id
   def initialize(forecast_params)
-    @forecast_params = forecast_params[:location]
+    @forecast_params = forecast_params
     @id = 1
   end
 
