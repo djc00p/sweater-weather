@@ -19,7 +19,7 @@ describe 'As a visitor' do
 #     ]
 # }
 
-  get '/api/v1/antipode?loc=hongkong'
+  get '/api/v1/antipode?loc=HongKong,CN'
 
 
   expect(response).to be_successful

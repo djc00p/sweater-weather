@@ -1,6 +1,6 @@
 class GoogleGeocodingService
   def initialize(forecast_params)
-    @city_state = forecast_params[:location]
+    @city_state = forecast_params
   end
 
   def address
