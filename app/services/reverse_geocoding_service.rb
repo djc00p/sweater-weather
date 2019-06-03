@@ -1,13 +1,10 @@
-class GoogleGeocodingService
-  def initialize(forecast_params)
-    @city_state = forecast_params
+class ReverseGeocodingService
+  def initialize(lat_lng)
+    @lat = lat_lng[:lat]
+    @lng = lat_lng[:long]
   end
 
-  def address
-    get_json[:address_components]
-  end
-
-  def location
+  def antipode
     get_json[:geometry][:location]
   end
 
@@ -22,7 +19,7 @@ private
   def conn
     Faraday.new('https://maps.googleapis.com/maps/api/geocode/json?') do |f|
       f.params['key'] = ENV['GOOGLE_API']
-      f.params['address'] = @city_state
+      f.params['latlng'] = "#{@lat},#{@lng}"
       f.adapter Faraday.default_adapter
     end
   end

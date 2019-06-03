@@ -11,8 +11,8 @@ class Antipode
 
   private
 
-  def antipode_service(location)
-    @_antipode_service ||= AntipodeService.new(location).antipode_location
+  def antipode_service
+    @_antipode_service ||= AntipodeService.new(google_service(@location).location).antipode_location
   end
 
   def google_service(location)
@@ -20,9 +20,7 @@ class Antipode
   end
 
   def locate_antipode
-    lat_lng = google_service(@location).location
-    anitpode_lat_lon = antipode_service(lat_lng)
-    
     binding.pry
+    ReverseGeocodingService.new(antipode_service).antipode
   end
 end
