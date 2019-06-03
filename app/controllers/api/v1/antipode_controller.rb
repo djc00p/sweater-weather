@@ -1,7 +1,7 @@
 class Api::V1::AntipodeController < ApplicationController
   def index
-    anitpode = Antipode.new(antipode_params).antipode_city
-    render json: Anti
+    anitpode = Antipode.new(antipode_params)
+    render json: AntipodeSerializer.new([anitpode])
   end
 
   private

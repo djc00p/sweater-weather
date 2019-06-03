@@ -3,16 +3,16 @@ require 'rails_helper'
 describe 'As a visitor' do
   it 'should return json of antipode' do
     expected = {
-	"data": [{
-		"id": "1",
-		"type": "antipode",
-		"attributes": {
-			"location_name": "Antipode City Name",
-			"forecast": {
-				"summary": "Mostly Cloudy",
-				"current_temperature": "72"
+	'data': [{
+		'id': '1',
+		'type': 'antipode',
+		'attributes': {
+			'location_name': 'Jujuy',
+			'forecast': {
+				'summary': 'Clear',
+				'current_temperature': '55'
 			},
-			"search_location": "Hong Kong"
+			'search_location': 'HongKong,CN'
 		}
 	}]
 }

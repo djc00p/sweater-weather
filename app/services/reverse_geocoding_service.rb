@@ -5,7 +5,7 @@ class ReverseGeocodingService
   end
 
   def antipode
-    get_json[:geometry][:location]
+    get_json
   end
 
 private

@@ -3,8 +3,8 @@ class AntipodeService
     @location = location
   end
 
-  def antipode_location
-    get_json
+  def antipode_json
+    get_json[:data][:attributes]
   end
 
   def conn
@@ -19,6 +19,6 @@ class AntipodeService
   def get_json
     response = conn.get
 
-    JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
