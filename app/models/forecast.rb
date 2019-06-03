@@ -1,17 +1,37 @@
 class Forecast
+  attr_reader :id
   def initialize(forecast_params)
     @forecast_params = forecast_params
+    @id = 1
   end
 
-  def city_weather
-    location ||= GoogleGeocoding.new(@forecast_params).location
+  def current_forecast
+    CurrentWeather.new(darksky_service.weather, google_service.address)
+  end
 
-    conn = Faraday.new('https://api.darksky.net/forecast/') do |f|
-      f.adapter Faraday.default_adapter
+  def current_forecast_details
+    CurrentWeatherDetails.new(darksky_service.weather)
+  end
+
+  def hourly_forecast
+    darksky_service.hourly.map do |hour|
+      HourlyWeather.new(hour)
     end
-    response = conn.get("#{ENV['DARK_SKY_API']}/#{location[:lat]},#{location[:lng]}")
+  end
 
-    data = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+  def daily_forecast
+    darksky_service.daily.drop(1).map do |day|
+      DailyWeather.new(day)
+    end
+  end
+
+  private
+
+  def darksky_service
+    @_forecast_service ||= DarkskyService.new(google_service.location)
+  end
+
+  def google_service
+    @_location_service ||= GoogleGeocodingService.new(@forecast_params)
   end
 end

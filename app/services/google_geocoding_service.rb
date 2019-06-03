@@ -1,16 +1,20 @@
-class GoogleGeocoding
+class GoogleGeocodingService
   def initialize(forecast_params)
     @city_state = forecast_params[:location]
   end
 
+  def address
+    get_json[:address_components]
+  end
+
   def location
-    get_json
+    get_json[:geometry][:location]
   end
 
   def get_json
-    response = conn.get
+    response ||= conn.get
     data = JSON.parse(response.body, symbolize_names: true)
-    data[:results][0][:geometry][:location]
+    data[:results][0]
   end
 
   def conn

@@ -1,8 +1,7 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-
-    render json: Forecast.new(forecast_params).city_weather
-    binding.pry
+    forecast = Forecast.new(forecast_params)
+    render json: CurrentWeatherSerializer.new(forecast)
   end
 
   private
