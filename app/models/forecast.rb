@@ -5,6 +5,10 @@ class Forecast
     @id = 1
   end
 
+  def location
+    @forecast_params
+  end
+
   def current_forecast
     CurrentWeather.new(darksky_service.weather, google_service.address)
   end
@@ -25,6 +29,7 @@ class Forecast
     end
   end
 
+
   private
 
   def darksky_service
@@ -33,5 +38,9 @@ class Forecast
 
   def google_service
     @_location_service ||= GoogleGeocodingService.new(@forecast_params)
+  end
+
+  def background_image_service
+    @_image_service ||= UnsplashService.new(@forecast_params)
   end
 end

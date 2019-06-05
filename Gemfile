@@ -15,7 +15,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'fast_jsonapi'
 gem 'flickr.rb', '~> 1.2', '>= 1.2.1'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 

@@ -1,10 +1,10 @@
-class Unsplash
+class UnsplashService
   def initialize(location)
     @location = location
   end
 
-  def background_image
-    get_json[:urls][:regular]
+  def background_images
+    get_json
   end
 
 

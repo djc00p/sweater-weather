@@ -1,6 +1,5 @@
 class CurrentWeather
-attr_reader :id,
-            :time,
+attr_reader :time,
             :summary,
             :icon,
             :temperature,
@@ -11,7 +10,6 @@ attr_reader :id,
             :country
 
   def initialize(attribute, address)
-    @id = 1
     @time = Time.at(attribute[:currently][:time]).strftime("%I:%M %p, %m/%d")
     @summary = attribute[:currently][:summary]
     @icon = attribute[:currently][:icon]
