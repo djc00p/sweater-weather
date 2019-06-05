@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post '/sessions', to: 'session#create', as: :new_session
       get '/favorites', to: 'favorite#index', as: :favorite
       post '/favorites', to: 'favorite#create', as: :new_favorite
+      delete '/favorites', to: 'favorite#delete'
     end
   end
 end

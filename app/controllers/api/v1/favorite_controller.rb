@@ -15,6 +15,16 @@ class  Api::V1::FavoriteController < BaseApiController
     end
   end
 
+  def delete
+    fav_city = current_user.favorite_cities.find_by(location: params[:location])
+    fav_cities = FavoriteCity.favorite_city_weather(current_user)
+    if fav_city.delete
+      render json: "Successfully deleted #{fav_city[:location]}"
+    end
+  end
+
+  private
+
   def favorite_params
     params.permit(:location, :user_id)
   end

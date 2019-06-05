@@ -4,8 +4,9 @@ class FavoriteCity < ApplicationRecord
 
   def self.favorite_city_weather(user)
     cities = where(user_id: user.id)
-    cities.map do |city|
+    list_of_cites = cities.map do |city|
       Forecast.new(city)
     end
+   list_of_cites << { api_key: user[:api_key] }
   end
 end
