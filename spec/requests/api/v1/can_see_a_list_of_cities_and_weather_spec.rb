@@ -13,7 +13,7 @@ RSpec.describe "As a user" do
       "ACCEPT" => "application/json",     # This is what Rails 4 accepts
       "HTTP_ACCEPT" => "application/json" # This is what Rails 3 accepts
     }
-    get "/api/v1/favorites", :params => {:location => "Denver, CO"}, :headers => headers
+    get "/api/v1/favorites", :params => {:location => "Denver, CO", api_key: "#{user.api_key}"}, :headers => headers
 
     expect(response).to be_successful
   end

@@ -10,7 +10,7 @@ RSpec.describe "As a user", :type => :request do
       "ACCEPT" => "application/json",     # This is what Rails 4 accepts
       "HTTP_ACCEPT" => "application/json" # This is what Rails 3 accepts
     }
-    post "/api/v1/favorites", :params => {:location => "Denver, CO"}, :headers => headers
+    post "/api/v1/favorites", :params => {:location => "Denver, CO", api_key: "#{user.api_key}"}, :headers => headers
     fav = FavoriteCity.last
 
     body =  {"data":{"id":"#{fav.id}","type":"favorite_cities","attributes":{"location":"Denver, CO","api_key":"#{user.api_key}"}}}

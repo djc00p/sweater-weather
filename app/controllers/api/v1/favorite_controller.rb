@@ -1,11 +1,12 @@
 class  Api::V1::FavoriteController < BaseApiController
   def index
-    fav_cities = FavoriteCity.favorite_city_weather(current_user)
+    user = User.find_by(api_key: params[:api_key])
+    fav_cities = FavoriteCity.favorite_city_weather(user)
     render json: FavoriteForecastSerializer.new(fav_cities)
   end
 
   def create
-    user = current_user
+    user = User.find_by(api_key: params[:api_key])
     favorite_city = FavoriteCity.new(favorite_params)
     favorite_city[:user_id] = user.id
     if favorite_city.save

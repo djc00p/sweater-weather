@@ -7,6 +7,5 @@ class FavoriteCity < ApplicationRecord
     list_of_cites = cities.map do |city|
       Forecast.new(city)
     end
-   list_of_cites << { api_key: user[:api_key] }
   end
 end
