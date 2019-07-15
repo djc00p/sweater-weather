@@ -4,6 +4,7 @@ By Deonte Cooper
 Deployed on Heroku at: https://still-reef-73477.herokuapp.com/
 
 ##Endpoints
+
 Example Endpoints
 ```
 GET /api/v1/forecast?location=denver,co
