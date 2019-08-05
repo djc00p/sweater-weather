@@ -15,8 +15,6 @@ DELETE /api/v1/favorites?api_key=USER_API_KEY&location=Denver,%20CO
 
 A weather app using [Ruby on Rails](https://rubyonrails.org/)
 
-This project is a Mod 4 assignment from the Turing School of Software and Design. [Assignment details are available](https://github.com/turingschool/backend-curriculum-site/blob/66a39813572f453700ab944948ecf698b0b75d42/module4/projects/express_sweater_weather/express_sweater_weather_spec.md) in the [@turingschool](https://github.com/turingschool) curriculum repository.
-
 
 ### Setup
 From the project root, run:
